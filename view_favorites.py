@@ -38,6 +38,7 @@ def show_fav_recipes(beverage_list):
     for beverage in favorite_recipes:
         result.append("\n-----------------------------\n"
                         f"Name: {beverage['name']} [*]\n"
+                        f"Ingredients: {", ".join(beverage["ingredients"])} \n"
                         f"Instructions:\n" + "\n".join([f"{i+1}. {step}" for i, step in enumerate(beverage.get("instructions", []))]))
     return "\n".join(result)
 
@@ -50,7 +51,6 @@ def remove_favorite(beverage_list, name):
             return f"\nRemoved {beverage['name']} from Favorites."
     
     return f"\nBeverage '{name}' is not found in favorites."
-
 
 
 def fav_main():
@@ -72,9 +72,9 @@ def fav_main():
             response = show_fav_recipes(beverages)
             print(f"Received request: {message}, printing beverage recipes... ")
 
-        elif message.startswith("3:"):  # Remove from Favorites
+        elif message.startswith("3:"):  #remove from Favorites
             name = message[2:]
-            response = remove_favorite(beverages, name)  # Now correctly passing `beverages`
+            response = remove_favorite(beverages, name)  #passing the correct name
             print(f"Received request: {message}, trying to remove beverage name: '{name}'... ")
 
         else:
