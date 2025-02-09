@@ -39,7 +39,7 @@ def delete_recipe(beverage_list, name):
             save_beverages(beverage_list)
             return f"Recipe '{name}' has been deleted."
 
-# Add a recipe to favorites
+#add a recipe to favorites
 def add_to_favorites(beverage_list, name):
     for beverage in beverage_list:
         if beverage["name"].lower() == name.lower():
