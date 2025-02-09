@@ -27,7 +27,7 @@ def show_beverages(beverage_list):
 def beverage_main():
     context = zmq.Context()
     socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:5551")  # Bind to port 5551
+    socket.bind("tcp://*:5551") 
 
     print("View All Beverages Server is running and listening...")
 
@@ -38,6 +38,6 @@ def beverage_main():
         beverage_list = load_beverages()
         response = show_beverages(beverage_list)
 
-        socket.send_string(response)
+        socket.send_string(response) #send the beverage list back to main
 
 beverage_main()

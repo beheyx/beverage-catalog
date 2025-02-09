@@ -9,14 +9,14 @@ def display_main_menu():
     print("4) Manage Recipes")
     print("5) Exit my PourFolio")
 
-def option_1(context):
+def option_1(context): #view all beverages
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5551")
     socket.send_string("1")  #send request first
     response = socket.recv_string()
     print(response)
 
-def option_2(context):
+def option_2(context): #view favorites
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5552")
 
@@ -52,7 +52,7 @@ def option_2(context):
             print(response)
 
 
-def option_3(context):
+def option_3(context): #search recipe
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5553")
 
@@ -62,7 +62,7 @@ def option_3(context):
     response = socket.recv_string()
     print(response)
 
-def option_4(context):
+def option_4(context): #manage recipes
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5554")
     
