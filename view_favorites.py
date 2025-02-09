@@ -6,9 +6,16 @@ def load_beverages():
         return json.load(file)
 
 #save updated beverage data to json
-def save_beverages(beverages):
+def save_beverages(beverage_list):
     with open("data.json", "w") as file:
-        json.dump(beverages, file, indent=4)
+        json.dump(beverage_list, file, indent=4)
+
+#check if beverage exists
+def check_exist(beverage_list, name):
+    for beverage in beverage_list:
+        if beverage["name"].lower() == name.lower():
+            return True 
+    return False
 
 #display fav beverage
 def show_fav_beverage(beverage_list):
@@ -62,19 +69,24 @@ def fav_main():
 
     while True:
         message = socket.recv_string()
-        beverages = load_beverages()
+        beverage_list = load_beverages()
 
-        if message == "1":  #view favorite beverage
-            response = show_fav_beverage(beverages)
+        if message.startswith("check:"):  #exist if found or not found
+            print(f"Received request: {message}, checking if beverage exists in catalog... ")
+            name = message.split("check:", 1)[1].strip()
+            response = "exists" if check_exist(beverage_list, name) else "not found"
+
+        elif message == "1":  #view favorite beverage
+            response = show_fav_beverage(beverage_list)
             print(f"Received request: {message}, printing favorite beverages... ")
 
         elif message == "2":  #view favorite recipes
-            response = show_fav_recipes(beverages)
+            response = show_fav_recipes(beverage_list)
             print(f"Received request: {message}, printing beverage recipes... ")
 
         elif message.startswith("3:"):  #remove from Favorites
-            name = message[2:]
-            response = remove_favorite(beverages, name)  #passing the correct name
+            name = message[2:] #remove the 3: 
+            response = remove_favorite(beverage_list, name)  #passing the correct name
             print(f"Received request: {message}, trying to remove beverage name: '{name}'... ")
 
         else:
