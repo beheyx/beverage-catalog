@@ -29,7 +29,7 @@ def beverage_main():
     socket = context.socket(zmq.REP)
     socket.bind("tcp://*:5551") 
 
-    print("View All Beverages Server is running and listening...")
+    print("View All Beverages Server is running and listening on port 5551...")
 
     while True:
         message = socket.recv_string()

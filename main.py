@@ -9,12 +9,14 @@ def display_main_menu():
     print("4) Manage Recipes")
     print("5) Exit my PourFolio")
 
+
 def option_1(context): #view all beverages
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5551")
     socket.send_string("1")  #send request first
     response = socket.recv_string()
     print(response)
+
 
 def option_2(context): #view favorites
     socket = context.socket(zmq.REQ)
@@ -37,17 +39,18 @@ def option_2(context): #view favorites
             break
 
         if sub_choice == "3":
-            drink_name = input("Enter the beverage name you wish to remove: ")
-            confirm = input(f"Do you wish to remove '{drink_name}'? (Yes/No): ").lower()
+            beverage_name = input("Enter the beverage name you wish to remove: ")
+            print("\nWARNING: If you removed this beverage from Favorites, then you would have to re-add it from 'Manage Recipe'!!! \n")
+            confirm = input(f"Do you wish to remove '{beverage_name}'? (Yes/No): ").lower()
 
             if confirm == "yes":
-                socket.send_string(f"3:{drink_name}")  # Send remove request
+                socket.send_string(f"3:{beverage_name}")  #send remove request with name
                 response = socket.recv_string()
                 print(response)
             else:
                 print("\nOperation canceled.")
         else:
-            socket.send_string(sub_choice)  # Send user choice
+            socket.send_string(sub_choice)  #send user choice
             response = socket.recv_string()
             print(response)
 
@@ -56,11 +59,41 @@ def option_3(context): #search recipe
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5553")
 
-    #socket.send_string("3")
-    #insert the sub menu option
+    while True:
+        print("\n--------------------------------------------------------------------")
+        print("| Search and Filter |")
+        print("- A place to search speicific recipe and filter beverages -")
+        print("\nWhat would you like to do?")
+        print("1) Search Recipe by Name")
+        print("2) Filter Beverages by Type")
+        print("3) Filter Beverages by Ingredient")
+        
+        print("4) Go Back to Main Menu")
+        
+        sub_choice = input("\nEnter a choice from 1 to 4: ")
 
-    response = socket.recv_string()
-    print(response)
+        if sub_choice == "4":
+            print("\nReturning to Main Menu...")
+            break
+        
+        if sub_choice == "1":
+            recipe_name = input("Enter the recipe name you are looking for: ")
+            socket.send_string(f"1:{recipe_name}")  #send remove request with name
+            response = socket.recv_string()
+            print(response) #recived and print response
+
+        elif sub_choice == "2":
+            beverage_type = input("Enter the type of beverages you are looking for: ")
+            socket.send_string(f"2:{beverage_type}")  #send remove request with type
+            response = socket.recv_string()
+            print(response) #recived and print response
+
+        elif sub_choice == "3":
+            beverage_ingr = input("Enter an ingredient you are looking for in beverages: ")
+            socket.send_string(f"3:{beverage_ingr}")  #send remove request with type
+            response = socket.recv_string()
+            print(response) #recived and print response
+
 
 def option_4(context): #manage recipes
     socket = context.socket(zmq.REQ)

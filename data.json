@@ -3,7 +3,10 @@
         "name": "Cappuccino",
         "category": "Coffee",
         "description": "A classic Italian espresso-based drink made with rich espresso, steamed milk, and a thick layer of milk foam. Perfect for a morning boost or an afternoon treat.",
-        "ingredients": ["coffee", "milk"],
+        "ingredients": [
+            "coffee",
+            "milk"
+        ],
         "instructions": [
             "Brew a shot of espresso and pour it into a cup.",
             "Steam milk until it reaches a frothy, creamy consistency.",
@@ -16,7 +19,13 @@
         "name": "Mojito",
         "category": "Cocktail",
         "description": "A refreshing Cuban cocktail made with fresh mint, lime, white rum, and soda water. A perfect summer drink.",
-        "ingredients": ["mint", "lime", "rum", "sugar", "soda water"],
+        "ingredients": [
+            "mint",
+            "lime",
+            "rum",
+            "sugar",
+            "soda water"
+        ],
         "instructions": [
             "Muddle mint leaves, lime juice, and sugar in a glass.",
             "Fill the glass with ice cubes.",
@@ -30,7 +39,12 @@
         "name": "Matcha Latte",
         "category": "Tea",
         "description": "A creamy, earthy green tea latte made with matcha powder and frothed milk. A great alternative to coffee with a smooth, energizing effect.",
-        "ingredients": ["matcha", "water", "milk", "sugar"],
+        "ingredients": [
+            "matcha",
+            "water",
+            "milk",
+            "sugar"
+        ],
         "instructions": [
             "Sift 1 teaspoon of matcha powder into a bowl.",
             "Add a small amount of hot water (not boiling) and whisk until smooth.",
@@ -44,7 +58,12 @@
         "name": "Strawberry Smoothie",
         "category": "Smoothie",
         "description": "A refreshing and healthy smoothie packed with fresh strawberries, banana, and yogurt.",
-        "ingredients": ["strawberry", "banana", "milk", "yogurt"],
+        "ingredients": [
+            "strawberry",
+            "banana",
+            "milk",
+            "yogurt"
+        ],
         "instructions": [
             "Add all ingredients to a blender.",
             "Blend until smooth and creamy.",
@@ -56,7 +75,12 @@
         "name": "Old Fashioned",
         "category": "Cocktail",
         "description": "A timeless whiskey cocktail featuring a balance of sweetness, bitters, and citrus.",
-        "ingredients": ["sugar", "whiskey", "bitters", "orange"],
+        "ingredients": [
+            "sugar",
+            "whiskey",
+            "bitters",
+            "orange"
+        ],
         "instructions": [
             "Place a sugar cube in a glass and soak it with a few dashes of bitters.",
             "Muddle the sugar until dissolved.",
@@ -70,7 +94,11 @@
         "name": "Iced Americano",
         "category": "Coffee",
         "description": "A simple and bold coffee drink made by diluting espresso with cold water and serving over ice.",
-        "ingredients": ["coffee", "water", "ice"],
+        "ingredients": [
+            "coffee",
+            "water",
+            "ice"
+        ],
         "instructions": [
             "Brew a double shot of espresso.",
             "Fill a glass with ice cubes.",
@@ -83,7 +111,14 @@
         "name": "Chai Tea Latte",
         "category": "Tea",
         "description": "A warm, spiced tea latte made with black tea, milk, and aromatic spices.",
-        "ingredients": ["black tea", "milk", "cinnamon", "ginger", "cloves", "sugar"],
+        "ingredients": [
+            "black tea",
+            "milk",
+            "cinnamon",
+            "ginger",
+            "cloves",
+            "sugar"
+        ],
         "instructions": [
             "Steep a black tea bag in hot water for 5 minutes.",
             "In a saucepan, heat milk with cinnamon, ginger, and cloves.",
@@ -97,7 +132,11 @@
         "name": "Pina Colada",
         "category": "Cocktail",
         "description": "A tropical, creamy cocktail made with coconut milk, pineapple juice, and rum.",
-        "ingredients": ["rum", "pineapple", "coconut milk"],
+        "ingredients": [
+            "rum",
+            "pineapple",
+            "coconut milk"
+        ],
         "instructions": [
             "Add all ingredients to a blender.",
             "Blend with ice until smooth.",
@@ -110,7 +149,11 @@
         "name": "Hot Chocolate",
         "category": "Hot Beverage",
         "description": "A rich and creamy chocolate drink made with milk, cocoa, and sugar.",
-        "ingredients": ["milk", "cocoa", "sugar"],
+        "ingredients": [
+            "milk",
+            "cocoa",
+            "sugar"
+        ],
         "instructions": [
             "Heat milk in a saucepan over medium heat.",
             "Whisk in cocoa powder and sugar.",
@@ -123,13 +166,17 @@
         "name": "Lemonade",
         "category": "Non-Alcoholic",
         "description": "A refreshing citrus drink made with freshly squeezed lemon juice, sugar, and water.",
-        "ingredients": ["lemon", "water", "sugar"],
+        "ingredients": [
+            "lemon",
+            "water",
+            "sugar"
+        ],
         "instructions": [
             "Juice the fresh lemons.",
             "In a pitcher, mix lemon juice with cold water.",
             "Add sugar and stir until dissolved.",
             "Serve over ice and enjoy."
         ],
-        "favorite": "*"
+        "favorite": ""
     }
 ]
