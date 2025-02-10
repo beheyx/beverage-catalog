@@ -85,7 +85,7 @@ def fav_main():
             print(f"Received request: {message}, printing beverage recipes... ")
 
         elif message.startswith("3:"):  #remove from Favorites
-            name = message[2:] #remove the 3: 
+            name = message[2:].strip() #remove the 3: 
             response = remove_favorite(beverage_list, name)  #passing the correct name
             print(f"Received request: {message}, trying to remove beverage name: '{name}'... ")
 
