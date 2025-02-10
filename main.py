@@ -85,7 +85,7 @@ def option_3(context): #search recipe
         
         if sub_choice == "1":
             #ask user for name, then send req to check if name exist
-            #receive res, if not found, then err
+            #receive res, if not found, then err, example code see view_fav.py line 74-77
             #if found, keep processing
             recipe_name = input("Enter the recipe name you are looking for: ").strip()
             socket.send_string(f"check:{recipe_name}")
@@ -184,7 +184,7 @@ def option_4(context): #manage recipes
             response = socket.recv_string()
 
             if response == "not found":
-                print(f"\ERROR: Failed to delete '{beverage_name}' because it does not exist! Try again.")
+                print(f"\nERROR: Failed to delete '{beverage_name}' because it does not exist! Try again.")
                 continue  #go back to menu
 
             print("\nWARNING: If you DELETE this recipe, then it will be GONE from the catalog!!! \n")
