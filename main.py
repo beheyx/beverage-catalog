@@ -118,7 +118,7 @@ def option_3(context): #search recipe
             response = socket.recv_string()
 
             if response == "not found":
-                print(f"\nERROR: Cannot find beverages with the ingredient of {beverage_type}! Try again.")
+                print(f"\nERROR: Cannot find beverages with the ingredient of {beverage_ingr}! Try again.")
                 continue  #go back to menu
             
             socket.send_string(f"3:{beverage_ingr}")  #send remove request with type
