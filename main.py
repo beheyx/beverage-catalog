@@ -1,6 +1,7 @@
 import zmq
 
 def display_main_menu():
+    print()
     print("\n--------------------------------------------------------------------")
     print("Menu Options")
     print("1) View All Beverages")
@@ -23,6 +24,7 @@ def option_2(context): #view favorites
     socket.connect("tcp://localhost:5552")
 
     while True:
+        print()
         print("\n--------------------------------------------------------------------")
         print("| Favorites |")
         print("- A place to manage your favorite beverages, add beverage to favorite feature can be found in 'Manage Recipes' -")
@@ -61,69 +63,44 @@ def option_2(context): #view favorites
             response = socket.recv_string()
             print(response)
 
-
-def option_3(context): #search recipe
+def option_3(context):  #search recipe microservice implemented by anton
     socket = context.socket(zmq.REQ)
     socket.connect("tcp://localhost:5553")
 
     while True:
+        print()
         print("\n--------------------------------------------------------------------")
         print("| Search and Filter |")
-        print("- A place to search speicific recipe and filter beverages -")
+        print("- A place to search specific recipes and filter beverages -")
         print("\nWhat would you like to do?")
         print("1) Search Recipe by Name")
         print("2) Filter Beverages by Type")
         print("3) Filter Beverages by Ingredient")
-        
         print("4) Go Back to Main Menu")
-        
+
         sub_choice = input("\nEnter a choice from 1 to 4: ")
 
         if sub_choice == "4":
             print("\nReturning to Main Menu...")
             break
-        
-        if sub_choice == "1":
-            #ask user for name, then send req to check if name exist
-            #receive res, if not found, then err, example code see view_fav.py line 74-77
-            #if found, keep processing
-            recipe_name = input("Enter the recipe name you are looking for: ").strip()
-            socket.send_string(f"check:{recipe_name}")
-            response = socket.recv_string()
 
+        if sub_choice in ["1", "2", "3"]:
+            if sub_choice == "1":
+                user_input = input("Enter the recipe name you are looking for: ").strip()
+            elif sub_choice == "2":
+                user_input = input("Enter the type of beverages you are looking for: ").strip()
+            elif sub_choice == "3":
+                user_input = input("Enter an ingredient you are looking for in beverages: ").strip()
+
+            # Send request in the format expected by the JavaScript service: "option:user_input"
+            socket.send_string(f"{sub_choice}:{user_input}")
+
+            # Receive and print response
+            response = socket.recv_string()
             if response == "not found":
-                print(f"\nERROR: Failed to look up '{recipe_name}' because it does not exist! Try again.")
-                continue  #go back to menu
-
-            socket.send_string(f"1:{recipe_name}")  #send remove request with name
-            response = socket.recv_string()
-            print(response) #recived and print response
-
-        elif sub_choice == "2":
-            beverage_type = input("Enter the type of beverages you are looking for: ").strip()
-            socket.send_string(f"check:{beverage_type}")
-            response = socket.recv_string()
-
-            if response == "not found":
-                print(f"\nERROR: Cannot find beverages with the cateogry of {beverage_type}! Try again.")
-                continue  #go back to menu
-            
-            socket.send_string(f"2:{beverage_type}")  #send remove request with type
-            response = socket.recv_string()
-            print(response) #recived and print response
-
-        elif sub_choice == "3":
-            beverage_ingr = input("Enter an ingredient you are looking for in beverages: ").strip()
-            socket.send_string(f"check:{beverage_ingr}")
-            response = socket.recv_string()
-
-            if response == "not found":
-                print(f"\nERROR: Cannot find beverages with the ingredient of {beverage_ingr}! Try again.")
-                continue  #go back to menu
-            
-            socket.send_string(f"3:{beverage_ingr}")  #send remove request with type
-            response = socket.recv_string()
-            print(response) #recived and print response
+                print(f"\nERROR: No results found for '{user_input}'. Try again.")
+            else:
+                print("\nSearch Results:\n" + response)
 
 
 def option_4(context): #manage recipes
@@ -131,6 +108,7 @@ def option_4(context): #manage recipes
     socket.connect("tcp://localhost:5554")
     
     while True:
+        print()
         print("\n--------------------------------------------------------------------")
         print("| Mangage Recipes |")
         print("- A place to add and delete recipes -")
