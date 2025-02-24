@@ -1,6 +1,6 @@
 This program contains 4 microservices. All are communicated via ZeroMQ
 
-Make sure you read both README.md (one in beverage_project and one in beverage_search)
+Make sure you read both README.md (one in beverage-project and one in beverage_search)
 
 The beverage_search folder comes from another repo: https://github.com/kapustindev/cs-361-beverage-search-ms
 
